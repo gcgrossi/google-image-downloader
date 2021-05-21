@@ -1,8 +1,11 @@
-# _G-i[mage]-dowloader_
-#### _Download Google images with Selenium and Python_
-***
+<img src="assets/Cover.png">
+
 #### _*Introduction*_
-In this Jupyter notebook we will setup a chrome driver. Given a Google image search page the script downloads the images related to that search in a specified folder. Follow the cells below for a full explanation of the code.
+Recently I started to take on some image classification exercises, in the context of my path in learning a little bit more about computer vision. I have to say I am having real fun playing around with images. There is so much to learn and so much applications in real world problems!
+
+The only big stopper for me is that I'm lazy. I don't like labelling datasets and I always try to find shortcuts to have my laptop doing the legwork for me. Since I'm quite familiar with Selenium and browser automation using Python, I though to write a little helper script that will dowload image datasets from Google images for me while I'm concentrating on other aspects of my projects. Let's know jump to the point.
+
+In this Jupyter notebook we will setup a chrome driver. Given a Google image search page the script will download the images related to that search in a specified folder. In this way you can have a comfortable tool to build your personal datasets for your deep learning tasks. Follow the cells below for a full explanation of the code.
 
 #### _Imports_
 
@@ -79,7 +82,7 @@ btn_html_class="gvi3cf"
 nimages_to_download=1
 
 # folder where to save the images
-# default: current directory 
+# default: current directory
 image_folder = os.path.join(os.getcwd())
 ```
 
@@ -92,13 +95,13 @@ def get_image_and_reponse(src):
     # save only valid image formats
     imageout=os.path.join(image_folder,src.split('/')[-1].split('?')[0])
     imageout=imageout if ".jpg" in i mageout or ".png" in imageout else None
-    
-    # get the response 
+
+    # get the response
     reponse = requests.get(src,timeout=5)
-   
+
     return (response, imageout)
  ```
- 
+
  a function to write the reponse content to disk (perform the actual image download).
 
 ```python
@@ -129,15 +132,15 @@ while True:
     try:
         # get reponse and imagename
         (reponse, imageout) = get_image_and_reposnse(img[1])
-        
+
         # if ok we save it to file
-        if imageout and reponse.status_code == 200: 
+        if imageout and reponse.status_code == 200:
             save_to_file(reponse,imageout)
             count+=1
     except:
         print("there was a problem in dowloading the image. Here is the traceback")
         traceback.print_exc()
-        
+
     #Find Next Button and try to click it       
     btn=[im for im in driver.find_elements_by_css_selector('a') if im.get_attribute("class")==btn_html_class]
     try:
@@ -147,8 +150,14 @@ while True:
         traceback.print_exc()
         #need to break to avoid geeting stuck in loop when arriving at the last image
         break
-    
+
     # break loop if the desired number of images
     # is been dowloaded
     if count==nimages_to_download:break
 ```
+As you can see the image was dowloaded in the current directory. Change it to where you want to have the file dowloaded along with changing the number of images to download and start building your dataset while sipping your coffee.
+
+In example, I'm watching the Lord Of the Rings while dowloading Gandalf images! Cool no?
+
+***
+<img src="assets/image_dowloaded.png">
