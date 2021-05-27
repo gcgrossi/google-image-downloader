@@ -1,6 +1,6 @@
 <img src="assets/Cover.png">
 
-#### _*Introduction*_
+#### _Introduction_
 Recently I started to take on some image classification exercises, in the context of my path in learning a little bit more about computer vision. I have to say I am having real fun playing around with images. There is so much to learn and so much applications in real world problems!
 
 The only big stopper for me is that I'm lazy. I don't like labelling datasets and I always try to find shortcuts to have my laptop doing the legwork for me. Since I'm quite familiar with Selenium and browser automation using Python, I though to write a little helper script that will dowload image datasets from Google images for me while I'm concentrating on other aspects of my projects. Let's know jump to the point.
