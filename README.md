@@ -75,7 +75,7 @@ Knowing this we can configure some variables and function.
 
 ```python
 # classes for image and button html elements
-img_html_class="n3VNCb
+img_html_class="n3VNCb"
 btn_html_class="gvi3cf"
 
 # number of images to dowload
